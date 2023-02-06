@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDROM from 'react-dom';
+import ReactDOM from 'react-dom';
 import Card from './Card';
 import Button from './Button';
 import classes from './ErrorModal.module.css';
