@@ -9,6 +9,7 @@ const AddUser = (props) => {
 
   const nameInputRef = useRef();
   const ageInputRef = useRef();
+  const passwordInputRef = useRef();
 
 
 
@@ -19,6 +20,7 @@ const AddUser = (props) => {
 
     const enteredUsername = nameInputRef.current.value;
     const enteredAge = ageInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
 
     if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
       setError({
@@ -34,9 +36,17 @@ const AddUser = (props) => {
       });
       return;
     }
-    props.onAddUser(enteredUsername, enteredAge);
+    if (enteredPassword.trim().length === 0 || enteredPassword.trim().length < 12){
+      setError({
+      title: 'Invalid password',
+      message: 'Please enter a password that contains a minimum of 12 characters.',
+    })
+  }
+
+    props.onAddUser(enteredUsername, enteredAge, enteredPassword);
     nameInputRef.current.value = '';
     ageInputRef.current.value = '';
+    passwordInputRef.current.value = '';
   };
 
   const errorHandler = () => {
@@ -65,6 +75,12 @@ const AddUser = (props) => {
             id="age"
             type="number"
             ref={ageInputRef}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+          id="password"
+          type="text"
+          ref={passwordInputRef}
           />
           <Button type="submit">Add User</Button>
         </form>
