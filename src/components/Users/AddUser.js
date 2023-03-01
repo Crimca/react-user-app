@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-
 import Card from '../UI/Card';
 import Button from '../UI/Button';
 import ErrorModal from '../UI/ErrorModal';
@@ -10,8 +9,6 @@ const AddUser = (props) => {
   const nameInputRef = useRef();
   const ageInputRef = useRef();
   const passwordInputRef = useRef();
-
-
 
   const [error, setError] = useState();
 
@@ -40,7 +37,8 @@ const AddUser = (props) => {
       setError({
       title: 'Invalid password',
       message: 'Please enter a password that contains a minimum of 12 characters.',
-    })
+    });
+    return;
   }
 
     props.onAddUser(enteredUsername, enteredAge, enteredPassword);
