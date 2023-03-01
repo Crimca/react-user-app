@@ -79,7 +79,7 @@ const AddUser = (props) => {
           <label htmlFor="password">Password</label>
           <input
           id="password"
-          type="text"
+          type="password"
           ref={passwordInputRef}
           />
           <Button type="submit">Add User</Button>
